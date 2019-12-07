@@ -1,17 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Movimientos from "./views/Movimientos"
+import { Provider } from "react-redux"
+import { createStore, applyMiddleware } from 'redux'
+import reducers from "./reducers"
+import ReduxThunk from "redux-thunk"
+
+const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>
-          Perfecto uwu
-        </h1>
-      </header>
-    </div>
+    <Provider store = {store}> 
+      <Movimientos />
+    </Provider>
   );
 }
 
